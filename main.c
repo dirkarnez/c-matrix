@@ -34,6 +34,16 @@ void set_data(struct matrix *m, int* data, int row, int col) {
     m->col = col;
 }
 
+void print_matrix(struct matrix *m)
+{
+    for (int i = 0; i < m->row; i++) {
+        for (int j = 0; j < m->col; j++) {
+            printf("%d,", m->data[(i * 2) + j]);
+        }
+         printf("\n");
+    }
+}
+
 // bool multiply(struct matrix *a, struct matrix *b, struct matrix *output) {
    
 
@@ -99,14 +109,7 @@ int main() {
 
             printf("\n");
 
-            for (int i = 0; i < c.row; i++) {
-                for (int j = 0; j < c.col; j++) {
-                    printf("%d,", c.data[(i * 2) + j]);
-                }
-                 printf("\n");
-            }
-
-
+            print_matrix(&c);
 
             // a[row] * b[col]
         }
