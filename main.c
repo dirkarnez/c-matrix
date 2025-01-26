@@ -60,23 +60,51 @@ int main() {
         if (a.col != b.row) {
            printf("Cannot multiply");
         } else {
-            int data[a.row * b.col] = {};
+            int data[a.row * b.col];
             c.row = a.row;
             c.col = b.col;
             c.data = data;
+
+            // c[0, 0] c[0, 1]
+            // c[0, 0] c[0, 0]
+
+           // 19 22 43 50
+            // a[0] * b[0] + a[1] * b[2]
+            
+
+            // int matrix[2][3] = { {1, 4, 2}, {3, 6, 8} };
+    
+            for (int i = 0; i < (a.row * b.col); i++) {
+                c.data[i] = 0;
+            }
+            
+            // 0:0 1
+            // 1:0 1 
             for (int i = 0; i < a.row; i++) {
                 for (int j = 0; j < b.col; j++) {
-                    c.data[i] = a.data[i] * b.data[j];
-                  
+                     c.data[(i * 2) + j] =  a.data[(i * 2)] * b.data[j] +  a.data[(i * 2) + 1] * b.data[j + 2];
                 }
             }
 
-            for (int i = 0; i < a.row; i++) {
-                for (int j = 0; j < b.col; j++) {
-                    printf("%d", c.data[i * j]);
-                }
-            }
+            // c.data[0] = a.data[0] * b.data[0] + a.data[1] * b.data[2];
+            // c.data[1] = a.data[0] * b.data[1] + a.data[1] * b.data[3];
+            // c.data[2] = a.data[2] * b.data[0] + a.data[3] * b.data[2];
+            // c.data[3] = a.data[2] * b.data[1] + a.data[3] * b.data[3];
 
+
+            printf("%d,", c.data[0]);
+            printf("%d,", c.data[1]);
+            printf("%d,", c.data[2]);
+            printf("%d,", c.data[3]);
+
+            printf("\n");
+
+            for (int i = 0; i < c.row; i++) {
+                for (int j = 0; j < c.col; j++) {
+                    printf("%d,", c.data[(i * 2) + j]);
+                }
+                 printf("\n");
+            }
 
 
 
